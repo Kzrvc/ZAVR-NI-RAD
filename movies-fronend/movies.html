@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <title>Moji filmovi</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <h1 class="logo">NETFLčips</h1>
+            </div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="menu-list-item active">Moji filmovi</li>
+                    <li class="menu-list-item">
+                        <a href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="user-info" style="display:none;">
+                <span id="user-welcome"></span>
+                <button id="logout-btn" class="logout-btn">Odjavi se</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content-container">
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">🎬 Moji omiljeni filmovi</h1>
+                <div class="movie-list-wrapper">
+                    <div id="mymovies-loader" class="spinner" style="display:block;"></div>
+                    <div class="movie-list" id="my-movie-list">
+                        <!-- Ovdje će JS generirati tvoje omiljene filmove -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">© 2025 ANTO KOŽAREVIĆ. All rights reserved.</p>
+            <p class="footer-text">Designed by ANTO | Contact: <a href="mailto:kzrvc@icloud.com">kzrvc@icloud.com</a></p>
+        </div>
+    </footer>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Prikaz user-info bloka i logout funkcije
+        const username = localStorage.getItem('username');
+        if (username) {
+            document.getElementById("user-info").style.display = "flex";
+            document.getElementById("user-welcome").textContent = username;
+        } else {
+            document.getElementById("user-info").style.display = "none";
+        }
+        const logoutBtn = document.getElementById("logout-btn");
+        if (logoutBtn) {
+            logoutBtn.onclick = function () {
+                localStorage.removeItem('username');
+                window.location.href = "index.html";
+            }
+        }
+
+        // Prikaz omiljenih filmova
+        const loader = document.getElementById('mymovies-loader');
+        const listDiv = document.getElementById('my-movie-list');
+        loader.style.display = 'block';
+        listDiv.innerHTML = '';
+
+        if (!username) {
+            loader.style.display = 'none';
+            listDiv.innerHTML = `<div class="empty-list-msg">Moraš biti prijavljen za prikaz omiljenih filmova.</div>`;
+            return;
+        }
+
+        // Funkcija za uklanjanje filma iz omiljenih
+        window.ukloniFilm = function(movieId) {
+            fetch('http://127.0.0.1:5000/remove_favorite', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, movie_id: movieId })
+            })
+            .then(res => res.json())
+            .then(data => {
+                alert(data.message || 'Film uklonjen.');
+                // Osvježi listu
+                prikaziMojeFilmove();
+            })
+            .catch(() => alert('Greška pri uklanjanju filma.'));
+        };
+
+        // Prikaz omiljenih filmova s opcijom uklanjanja
+        function prikaziMojeFilmove() {
+            loader.style.display = 'block';
+            listDiv.innerHTML = '';
+            fetch(`http://127.0.0.1:5000/my_movies/${username}`)
+                .then(res => res.json())
+                .then(films => {
+                    loader.style.display = 'none';
+                    if (!films || films.length === 0) {
+                        listDiv.innerHTML = `<div class="empty-list-msg">Nema tvojih omiljenih filmova.</div>`;
+                        return;
+                    }
+                    films.forEach(film => {
+                        listDiv.innerHTML += `
+                            <div class="movie-list-item">
+                                <img class="movie-list-item-img" src="${film.poster_url || 'img/placeholder.jpg'}" alt="${film.title}">
+                                <div class="movie-info-overlay">
+                                    <div class="movie-title">${film.title}</div>
+                                    <div class="movie-rating">★ ${film.average_rating !== null && film.average_rating !== undefined ? film.average_rating.toFixed(2) : 'N/A'}</div>
+                                    <div class="movie-desc">${film.description || 'Nema opisa.'}</div>
+                                    <button class="movie-list-item-button" onclick="ukloniFilm('${film.id}')">Ukloni ❌</button>
+                                </div>
+                            </div>
+                        `;
+                    });
+                })
+                .catch(error => {
+                    loader.style.display = 'none';
+                    listDiv.innerHTML = `<div class="empty-list-msg">Greška pri dohvaćanju filmova.</div>`;
+                    console.error("Greška pri dohvaćanju mojih filmova:", error);
+                });
+        }
+
+        // Poziv inicijalno i nakon uklanjanja
+        prikaziMojeFilmove();
+    });
+    </script>
+</body>
+</html>
