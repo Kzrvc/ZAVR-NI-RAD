@@ -1,0 +1,6 @@
+Flask
+flask-cors
+numpy==1.24.4
+pandas
+scikit-learn
+scikit-surprise

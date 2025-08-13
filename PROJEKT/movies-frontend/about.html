@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <title>About - NETFLčips</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <h1 class="logo">NETFLčips</h1>
+            </div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="menu-list-item">
+                        <a href="movies.html">Moji filmovi</a>
+                    </li>
+                    <li class="menu-list-item active">About</li>
+                </ul>
+            </div>
+            <div id="user-info" style="display:none;">
+                <span id="user-welcome"></span>
+                <button id="logout-btn" class="logout-btn">Odjavi se</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content-container">
+
+            <div class="featured-content"
+                style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('img/f-2.jpg'); min-height: 220px;">
+                <h1 class="featured-title" style="color: #fff; margin-top: 80px; font-size: 2.5rem; text-shadow: 0 2px 18px #000;">O NETFLčipsu</h1>
+            </div>
+
+            <div class="movie-list-container" style="margin-top:30px;">
+                <h2 class="movie-list-title">Statistika platforme</h2>
+                <table class="about-table" id="about-table">
+                    <thead>
+                        <tr>
+                            <th>Kategorija</th>
+                            <th>Vrijednost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ukupno filmova</td>
+                            <td id="movie-count">–</td>
+                        </tr>
+                        <tr>
+                            <td>Vaši omiljeni filmovi</td>
+                            <td id="user-fav-count">–</td>
+                        </tr>
+                        <tr>
+                            <td>Platforma aktivna od</td>
+                            <td>2025.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="about-description" style="text-align:center;">
+                    <p>Statistika se automatski ažurira. "Vaši omiljeni filmovi" je broj filmova koje ste označili kao omiljene.</p>
+                </div>
+            </div>
+
+            <div class="movie-list-container" style="margin-top:18px;">
+                <h2 class="movie-list-title">Zašto koristiti NETFLčips?</h2>
+                <ul class="about-features">
+                    <li>Brzo pregledavanje i pretraga svih dostupnih filmova i serija</li>
+                    <li>Lajkanje i ocjenjivanje omiljenih naslova</li>
+                    <li>Personalizirane preporuke na temelju tvojih lajkova i povijesti</li>
+                    <li>Jednostavno upravljanje vlastitim profilom i favoritima</li>
+                    <li>Responzivan i moderan dizajn – koristi platformu na računalu, mobitelu ili tabletu</li>
+                    <li>Sigurna prijava i upravljanje korisničkim računom</li>
+                    <li>Povijest gledanih i lajkova na profilu</li>
+                    <li>Aktivna zajednica filmofila</li>
+                </ul>
+            </div>
+
+            <div class="movie-list-container" style="margin-top:18px;">
+                <h2 class="movie-list-title">Tehnologije i razvoj</h2>
+                <table class="about-table" style="max-width:700px;margin-bottom:18px;">
+                    <thead>
+                        <tr>
+                            <th>Tehnologija</th>
+                            <th>Opis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>HTML5, CSS3</td>
+                            <td>Struktura, dizajn i responzivnost korisničkog sučelja</td>
+                        </tr>
+                        <tr>
+                            <td>JavaScript (ES6+)</td>
+                            <td>Interaktivnost, pretraga, prikaz dinamičkih podataka</td>
+                        </tr>
+                        <tr>
+                            <td>REST API</td>
+                            <td>Povezuje frontend i backend, omogućuje dohvat filmova, lajkova i statistika u realnom vremenu</td>
+                        </tr>
+                        <tr>
+                            <td>Backend (Python/Flask)</td>
+                            <td>Pohrana podataka, autentikacija, generiranje preporuka, statistika</td>
+                        </tr>
+                        <tr>
+                            <td>Baza podataka</td>
+                            <td>Čuva sve filmove, serije, korisnike, lajkove, povijest i ocjene</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="about-description" style="margin-bottom: 50px;">
+                <h2 style="text-align:center;">Vizija, misija i kontakt</h2>
+                <p>
+                    <b>NETFLčips</b> je razvijen s ciljem da ljubiteljima filma i serija pruži sigurnu, brzu i zabavnu platformu za otkrivanje i organizaciju omiljenih naslova. 
+                    Kroz personalizirane preporuke, lajkove i praćenje vlastitih favorita, svaki korisnik može prilagoditi iskustvo svom ukusu.
+                </p>
+                <p>
+                    Platforma se stalno razvija i raste na temelju povratnih informacija zajednice. Podaci se prikazuju u realnom vremenu, a privatnost i sigurnost korisnika su prioritet.
+                </p>
+                <p>
+                    Imaš prijedlog, pohvalu ili bug? Javi se na <a href="mailto:kzrvc@icloud.com">kzrvc@icloud.com</a> ili koristi kontakt formu ispod.
+                </p>
+                <form id="contact-form" style="margin: 0 auto; max-width: 400px; background: #222; border-radius: 12px; padding: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.18);">
+                    <h3 style="color:#a259ec;text-align:center;margin-bottom:10px;">Kontaktiraj nas</h3>
+                    <label for="ime" style="color:#fff;">Ime:</label>
+                    <input type="text" id="ime" name="ime" style="width:100%; margin-bottom:8px; border-radius:6px; border:none; padding:8px;">
+                    <label for="email" style="color:#fff;">E-mail:</label>
+                    <input type="email" id="email" name="email" style="width:100%; margin-bottom:8px; border-radius:6px; border:none; padding:8px;">
+                    <label for="poruka" style="color:#fff;">Poruka:</label>
+                    <textarea id="poruka" name="poruka" rows="3" style="width:100%; margin-bottom:8px; border-radius:6px; border:none; padding:8px;"></textarea>
+                    <button type="submit" style="width:100%; background:#a259ec; color:#fff; border:none; border-radius:6px; font-weight:700; padding:10px 0; cursor:pointer;">Pošalji</button>
+                    <div id="form-status" style="margin-top:7px; color:#a259ec;text-align:center;font-size:1rem;"></div>
+                </form>
+            </div>
+
+            <div class="movie-list-container" style="margin-top:0px; margin-bottom: 18px;">
+                <h2 class="movie-list-title">Česta pitanja (FAQ)</h2>
+                <ul class="about-features" style="list-style-type: square;">
+                    <li><b>Je li korištenje platforme besplatno?</b><br>Sve osnovne funkcije su potpuno besplatne za sve korisnike.</li>
+                    <li><b>Što ako zaboravim lozinku?</b><br>Možeš resetirati lozinku putem e-maila na login stranici.</li>
+                    <li><b>Kako se računaju "Vaši omiljeni filmovi"?</b><br>To je broj filmova koje si ti osobno označio/la kao omiljene (lajkane).</li>
+                    <li><b>Mogu li predložiti novi film ili seriju?</b><br>Ako želiš predložiti naslov, pošalji poruku preko kontakt forme ili maila.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">© 2025 ANTO KOŽAREVIĆ. All rights reserved.</p>
+            <p class="footer-text">Designed by ANTO | Contact: <a href="mailto:kzrvc@icloud.com">kzrvc@icloud.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+    // Prikaz korisničkog imena i tipke Odjavi se (radi na svakoj stranici)
+    document.addEventListener("DOMContentLoaded", function() {
+        const username = localStorage.getItem('username');
+        if (username) {
+            document.getElementById("user-info").style.display = "flex";
+            document.getElementById("user-welcome").textContent = username;
+        } else {
+            document.getElementById("user-info").style.display = "none";
+        }
+        const logoutBtn = document.getElementById("logout-btn");
+        if (logoutBtn) {
+            logoutBtn.onclick = function() {
+                localStorage.removeItem('username');
+                window.location.href = "index.html";
+            }
+        }
+
+        // Dinamičko dohvaćanje statistike
+        fetch("http://127.0.0.1:5000/stats" + (username ? "?user=" + encodeURIComponent(username) : ""))
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("movie-count").textContent = data.movies ?? "–";
+            document.getElementById("user-fav-count").textContent = username ? (data.user_fav_count ?? "0") : "Prijavi se";
+        })
+        .catch(() => {
+            document.getElementById("movie-count").textContent = "–";
+            document.getElementById("user-fav-count").textContent = username ? "0" : "Prijavi se";
+        });
+
+        // Kontakt forma (samo demo poruka, bez backend slanja)
+        document.getElementById("contact-form").onsubmit = function(e) {
+            e.preventDefault();
+            document.getElementById("form-status").textContent = "Poruka poslana! Hvala na javljanju.";
+            setTimeout(() => document.getElementById("form-status").textContent = "", 3500);
+            this.reset();
+        };
+    });
+    </script>
+</body>
+</html>
